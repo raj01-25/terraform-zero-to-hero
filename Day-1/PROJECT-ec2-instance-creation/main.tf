@@ -1,8 +1,13 @@
 provider "aws" {
-    region = "us-east-1"  # Set your desired AWS region
+  region = "ap-south-1"
 }
+resource "aws_instance" "my_ec2_instance" {
+  ami           = "ami-02b8269d5e85954ef" # Ubuntu Linux AMI (HVM), SSD Volume Type
+  instance_type = "t3.micro"
+  key_name = "ubuntuKey"
+  subnet_id = "subnet-023a729f4abe62055"
 
-resource "aws_instance" "example" {
-    ami           = "ami-0c55b159cbfafe1f0"  # Specify an appropriate AMI ID
-    instance_type = "t2.micro"
+  tags = {
+    Name = "MyFirstEC2Instance"
+  }
 }
