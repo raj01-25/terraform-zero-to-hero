@@ -1,10 +1,19 @@
 provider "aws" {
-  region = "us-east-1"
+    region = "ap-south-1"   
+  
 }
 
 module "ec2_instance" {
-  source = "./modules/ec2_instance"
-  ami_value = "ami-053b0d53c279acc90" # replace this
-  instance_type_value = "t2.micro"
-  subnet_id_value = "subnet-019ea91ed9b5252e7". # replace this
+    source = "./modules/ec2_instance"
+    instance_name = "terraform-01"
+    ami_value           = "ami-02b8269d5e85954ef"
+    instance_type_value = "t3.micro"  
+    subnet_id_value     = "subnet-023a729f4abe62055"
+  
+}
+
+module "s3_bucket" {
+    source = "./modules/s3_bucket"
+    bucket_name = "terraform-01-bucket-raj26"
+  
 }
